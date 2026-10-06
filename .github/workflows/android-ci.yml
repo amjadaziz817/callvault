@@ -6,8 +6,9 @@ on:
   pull_request:
     branches: [ main ]
 
+# Least privilege by default. Only the publish job raises this.
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -35,25 +36,33 @@ jobs:
           name: callvault-debug
           path: app/build/outputs/apk/debug/app-debug.apk
 
-      # Publish the debug APK as a prerelease, so the Releases page has an
-      # installable file for testing. This runs only on a push to main, not
-      # on a pull request. A proper SIGNED release still comes from a v* tag
-      # (see release.yml). This APK is a debug build, for testing only.
-      - name: Prepare debug APK for the prerelease
-        if: github.event_name == 'push'
-        run: |
-          mkdir -p dist
-          cp app/build/outputs/apk/debug/app-debug.apk dist/callvault-latest-debug.apk
+  # Publish the debug APK as a prerelease, so the Releases page has an
+  # installable file for testing. This job runs only on a push to main.
+  # It uses the first-party GitHub CLI, so there is no third-party action.
+  # A proper SIGNED release still comes from a v* tag (see release.yml).
+  publish-debug:
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download the built APK
+        uses: actions/download-artifact@v4
+        with:
+          name: callvault-debug
+          path: dist
+
+      - name: Rename the APK
+        run: mv dist/app-debug.apk dist/callvault-latest-debug.apk
 
       - name: Publish the latest debug prerelease
-        if: github.event_name == 'push'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest-debug
-          name: Latest debug build (for testing)
-          prerelease: true
-          body: |
-            This is an automatic debug build from the latest commit on main.
-            It is for testing only. It is a debug APK, not a signed release.
-            For a stable signed release, use a version tag (for example v1.0.0).
-          files: dist/callvault-latest-debug.apk
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release delete latest-debug --yes --cleanup-tag || true
+          gh release create latest-debug dist/callvault-latest-debug.apk \
+            --prerelease \
+            --title "Latest debug build (for testing)" \
+            --notes "Automatic debug build from the latest commit on main. For testing only. This is a debug APK, not a signed release. For a stable signed release, use a version tag (for example v1.0.0)."
