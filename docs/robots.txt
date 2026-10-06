@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amjadaziz817.github.io/callvault/sitemap.xml

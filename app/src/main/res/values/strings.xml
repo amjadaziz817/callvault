@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">CallVault</string>
+
+    <string name="setup_title">Finish the setup</string>
+    <string name="setup_step_permissions">1. Grant the microphone and phone permissions.</string>
+    <string name="setup_step_accessibility">2. Turn on the CallVault accessibility service.</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="open_accessibility">Open accessibility settings</string>
+    <string name="speaker_label">Turn on the speaker during a call (records the other person)</string>
+
+    <string name="empty">No recordings yet. Your calls will appear here.</string>
+    <string name="play">Play</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
+
+    <string name="accessibility_description">CallVault uses this service only to record your phone calls. On Android 10 and later, the system allows a call recording from an accessibility service. CallVault does not read your screen content.</string>
+
+    <string name="recording_channel_name">Call recording</string>
+    <string name="recording_notification_title">CallVault</string>
+    <string name="recording_notification_text">Recording this call</string>
+
+    <string name="log_deal">Log a deal</string>
+    <string name="deal_title">Log a deal</string>
+    <string name="deal_number_hint">Phone number</string>
+    <string name="deal_crop_hint">Crop (for example wheat)</string>
+    <string name="deal_quantity_hint">Quantity</string>
+    <string name="deal_unit_hint">Unit (kg)</string>
+    <string name="deal_rate_hint">Rate (for example 2450 per quintal)</string>
+    <string name="deal_delivery_hint">Delivery date</string>
+    <string name="deal_save_and_send">Save and send WhatsApp confirmation</string>
+    <string name="deal_save_only">Save only</string>
+    <string name="deal_saved">Deal saved</string>
+    <string name="deal_missing_fields">Enter the crop, the quantity, and the rate.</string>
+    <string name="whatsapp_missing">WhatsApp is not installed. The app will try SMS.</string>
+    <string name="no_sms_app">No SMS app is available.</string>
+</resources>
