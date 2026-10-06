@@ -1,0 +1,22 @@
+CallVault records your phone calls automatically. It works without root. It is
+free and open source.
+
+CallVault uses an Android accessibility service to record a call. So it records
+on Android 10 and later, where normal apps cannot. Your recordings stay on your
+phone in internal storage. There is no account and no server.
+
+Features:
+* Records every call automatically.
+* Works without root.
+* Records both sides when the phone allows it.
+* Saves each recording with the phone number and the time.
+* Plays, shares, and deletes a recording.
+* Logs a deal and sends a WhatsApp confirmation.
+* Keeps the data on your phone. No cloud and no backup.
+
+The recording quality of the other person depends on your phone model. On some
+phones CallVault records both voices clearly. On other phones it records only
+your voice unless the speaker is on. Test on your phone first.
+
+Legal notice: The law on call recording differs by country. In some places you
+must tell the other person. Check your local law before you record a call.

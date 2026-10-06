@@ -1,0 +1,4 @@
+First version of CallVault.
+- Automatic call recording without root.
+- Recordings list with play, share, and delete.
+- Deal log with WhatsApp confirmation.
