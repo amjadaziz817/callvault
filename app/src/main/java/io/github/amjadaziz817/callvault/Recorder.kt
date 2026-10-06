@@ -45,7 +45,8 @@ class Recorder(private val context: Context) {
 
         for (source in sources) {
             if (tryStart(source, file)) {
-                Log.i(TAG, "Recording started with source $source -> ${file.name}")
+                // Do not log the file name. It contains the phone number.
+                Log.i(TAG, "Recording started with source $source")
                 return true
             }
         }

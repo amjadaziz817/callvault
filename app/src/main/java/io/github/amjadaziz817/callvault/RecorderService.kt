@@ -41,7 +41,8 @@ class RecorderService : Service() {
         val ok = rec.start(number, forceSpeaker = prefs.forceSpeaker)
         if (ok) {
             recorder = rec
-            Log.i(TAG, "RecorderService recording $number")
+            // Do not log the phone number. It is sensitive.
+            Log.i(TAG, "RecorderService started recording")
         } else {
             Log.e(TAG, "RecorderService failed to start")
             stopSelf()
